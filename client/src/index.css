@@ -104,20 +104,34 @@
   }
   
   .glow-effect {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4), 0 0 60px rgba(59, 130, 246, 0.2);
   }
   
   .card-hover {
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
   
   .card-hover:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(-15px) scale(1.03) rotateX(5deg);
+    box-shadow: 
+      0 25px 50px rgba(0, 0, 0, 0.4),
+      0 0 30px rgba(59, 130, 246, 0.2);
   }
 
   .skill-bar {
-    transition: width 2s ease-in-out;
+    transition: width 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+
+  .skill-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+    animation: shimmer 2s ease-in-out infinite;
   }
 
   .nav-link {
@@ -132,12 +146,28 @@
     height: 2px;
     bottom: -4px;
     left: 0;
-    background-color: var(--portfolio-secondary);
-    transition: width 0.3s ease;
+    background: linear-gradient(90deg, var(--portfolio-secondary), var(--portfolio-accent));
+    transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
   .nav-link:hover:after {
     width: 100%;
+  }
+
+  .hexagon-shape {
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  }
+
+  .ai-float {
+    animation: aiFloat 8s ease-in-out infinite;
+  }
+
+  .robot-bounce {
+    animation: robotBounce 3s ease-in-out infinite;
+  }
+
+  .ml-pulse {
+    animation: mlPulse 4s ease-in-out infinite;
   }
 }
 
@@ -151,39 +181,108 @@
   }
   
   .animate-fade-in {
-    animation: fadeIn 0.6s ease-out;
+    animation: fadeIn 0.8s ease-out;
   }
   
   .animate-slide-up {
-    animation: slideUp 0.8s ease-out;
+    animation: slideUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  }
+
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+
+  .animate-bounce-slow {
+    animation: bounce 3s ease-in-out infinite;
   }
 }
 
 @keyframes float {
   0%, 100% { 
-    transform: translateY(0px); 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  25% {
+    transform: translateY(-15px) rotate(2deg);
   }
   50% { 
-    transform: translateY(-20px); 
+    transform: translateY(-25px) rotate(0deg); 
+  }
+  75% {
+    transform: translateY(-15px) rotate(-2deg);
   }
 }
 
 @keyframes fadeIn {
   0% { 
-    opacity: 0; 
+    opacity: 0;
+    transform: translateY(20px);
   }
   100% { 
-    opacity: 1; 
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 @keyframes slideUp {
   0% { 
-    transform: translateY(30px); 
+    transform: translateY(40px); 
     opacity: 0; 
   }
   100% { 
     transform: translateY(0); 
     opacity: 1; 
+  }
+}
+
+@keyframes aiFloat {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-20px) rotate(5deg) scale(1.1);
+  }
+  50% { 
+    transform: translateY(-30px) rotate(0deg) scale(1.05);
+  }
+  75% {
+    transform: translateY(-20px) rotate(-5deg) scale(1.1);
+  }
+}
+
+@keyframes robotBounce {
+  0%, 100% { 
+    transform: translateY(0px) rotateX(0deg);
+  }
+  50% { 
+    transform: translateY(-15px) rotateX(10deg);
+  }
+}
+
+@keyframes mlPulse {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% { 
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

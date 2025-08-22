@@ -39,8 +39,8 @@ export default function AboutSection() {
     <section id="about" className="py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-4xl font-bold mb-6" data-testid="about-title">About Me</h2>
+          <div className="animate-slide-up">
+            <h2 className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-400" data-testid="about-title">About Me</h2>
             <div className="space-y-4 text-slate-300 text-lg leading-relaxed">
               <p data-testid="about-bio">
                 I'm a passionate Web Designer and AI enthusiast with a unique blend of creative design skills 
@@ -84,13 +84,25 @@ export default function AboutSection() {
             </div>
           </div>
           
-          <div className="text-center lg:text-right">
-            <img 
-              src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600" 
-              alt="Professional developer workspace" 
-              className="rounded-2xl shadow-2xl mx-auto animate-float"
-              data-testid="about-image"
-            />
+          <div className="text-center lg:text-right animate-slide-up" style={{ animationDelay: "0.3s" }}>
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600" 
+                alt="Professional developer workspace" 
+                className="rounded-2xl shadow-2xl mx-auto animate-float glow-effect"
+                data-testid="about-image"
+              />
+              {/* Floating AI elements around the image */}
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500/20 rounded-full animate-ml-pulse flex items-center justify-center">
+                🤖
+              </div>
+              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-500/20 rounded-full animate-ai-float flex items-center justify-center text-sm">
+                🧠
+              </div>
+              <div className="absolute top-1/2 -right-8 w-7 h-7 bg-green-500/20 rounded-full animate-robot-bounce flex items-center justify-center">
+                ⚡
+              </div>
+            </div>
             
             {/* Stats */}
             <div className="grid grid-cols-2 gap-6 mt-8">

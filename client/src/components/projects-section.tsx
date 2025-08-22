@@ -64,10 +64,11 @@ export default function ProjectsSection() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {displayedProjects.map((project) => (
+          {displayedProjects.map((project, index) => (
             <div 
               key={project.id}
-              className="card-hover bg-portfolio-surface rounded-xl overflow-hidden border border-slate-700"
+              className="card-hover bg-portfolio-surface rounded-xl overflow-hidden border border-slate-700 group animate-slide-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
               data-testid={`project-card-${project.id}`}
             >
               <img 

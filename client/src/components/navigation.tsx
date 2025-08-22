@@ -38,11 +38,11 @@ export default function Navigation() {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 border-b border-slate-800 ${scrolled ? "bg-slate-900/95 backdrop-blur-sm" : "bg-slate-900/90 backdrop-blur-sm"}`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 border-b border-slate-800/50 ${scrolled ? "bg-slate-900/95 backdrop-blur-lg shadow-lg shadow-blue-500/5" : "bg-slate-900/90 backdrop-blur-sm"}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="text-xl font-bold text-white">
-            <span data-testid="brand-name">Fadoua OUBZA</span>
+          <div className="text-xl font-bold text-white hover:text-blue-400 transition-all duration-300">
+            <span data-testid="brand-name" className="tracking-wide">Fadoua OUBZA</span>
           </div>
           
           {/* Desktop Navigation */}
@@ -51,8 +51,8 @@ export default function Navigation() {
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className={`nav-link text-slate-300 hover:text-white transition-colors capitalize ${
-                  activeSection === section ? "text-secondary" : ""
+                className={`nav-link text-slate-300 hover:text-blue-400 transition-all duration-300 capitalize transform hover:scale-105 ${
+                  activeSection === section ? "text-blue-400 scale-105" : ""
                 }`}
                 data-testid={`nav-link-${section}`}
               >
@@ -65,21 +65,21 @@ export default function Navigation() {
           <div className="hidden md:flex space-x-4">
             <a 
               href="#" 
-              className="text-slate-400 hover:text-secondary transition-colors"
+              className="text-slate-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
               data-testid="social-instagram"
             >
               <i className="fab fa-instagram text-lg"></i>
             </a>
             <a 
               href="#" 
-              className="text-slate-400 hover:text-secondary transition-colors"
+              className="text-slate-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
               data-testid="social-github"
             >
               <i className="fab fa-github text-lg"></i>
             </a>
             <a 
               href="#" 
-              className="text-slate-400 hover:text-secondary transition-colors"
+              className="text-slate-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
               data-testid="social-linkedin"
             >
               <i className="fab fa-linkedin text-lg"></i>

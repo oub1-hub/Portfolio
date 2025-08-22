@@ -38,14 +38,18 @@ export default function ServicesSection() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <div 
               key={service.id}
-              className="card-hover bg-portfolio-surface p-8 rounded-xl border border-slate-700 text-center"
+              className="card-hover bg-portfolio-surface p-8 rounded-xl border border-slate-700 text-center group animate-slide-up relative overflow-hidden"
+              style={{ animationDelay: `${index * 0.2}s` }}
               data-testid={`service-card-${service.id}`}
             >
-              <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <i className={`${service.icon} text-secondary text-2xl`} data-testid={`service-icon-${service.id}`}></i>
+              {/* Animated background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+              <div className="relative z-10">
+              <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 animate-ml-pulse">
+                <i className={`${service.icon} text-blue-400 text-2xl`} data-testid={`service-icon-${service.id}`}></i>
               </div>
               <h3 className="text-xl font-semibold mb-4" data-testid={`service-title-${service.id}`}>
                 {service.title}
@@ -53,6 +57,7 @@ export default function ServicesSection() {
               <p className="text-slate-300 leading-relaxed" data-testid={`service-description-${service.id}`}>
                 {service.description}
               </p>
+              </div>
             </div>
           ))}
         </div>

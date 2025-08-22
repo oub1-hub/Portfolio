@@ -126,7 +126,10 @@ export default function ContactSection() {
           </div>
           
           {/* Contact Form */}
-          <div className="bg-portfolio-surface p-8 rounded-xl border border-slate-700">
+          <div className="bg-portfolio-surface p-8 rounded-xl border border-slate-700 animate-slide-up relative overflow-hidden" style={{ animationDelay: "0.2s" }}>
+            {/* Animated background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5"></div>
+            <div className="relative z-10">
             <form onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">Full Name</label>
@@ -191,12 +194,18 @@ export default function ContactSection() {
               <button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="w-full bg-primary hover:bg-secondary text-white py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 glow-effect disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 glow-effect disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
                 data-testid="button-submit"
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
+                )}
+                <span className="relative z-10">
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </span>
               </button>
             </form>
+            </div>
           </div>
         </div>
       </div>
