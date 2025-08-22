@@ -36,7 +36,7 @@ export default function HeroSection() {
       </div>
       
       {/* Hero Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start lg:items-start">
         <div className={`transition-all duration-1000 ${isVisible ? "animate-fade-in" : "opacity-0"}`}>
           <p className="text-slate-300 text-lg mb-4 animate-slide-up" style={{ animationDelay: "0.2s" }} data-testid="hero-greeting">
             Hi, This is <span className="text-blue-400 font-semibold">Fadoua OUBZA</span>,
@@ -97,7 +97,7 @@ export default function HeroSection() {
         </div>
         
         {/* Profile Picture Area */}
-        <div className="flex justify-center lg:justify-end animate-slide-up" style={{ animationDelay: "0.5s" }}>
+        <div className="flex justify-center lg:justify-end animate-slide-up lg:mt-8" style={{ animationDelay: "0.5s" }}>
           <div className="relative">
             {/* Main picture container */}
             <div className="w-80 h-80 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 p-1 animate-float">
