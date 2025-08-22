@@ -14,7 +14,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-slate-900 border-t border-slate-800 py-12">
+    <footer className="bg-slate-900/40 backdrop-blur-sm border-t border-slate-800/50 py-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <div className="text-2xl font-bold mb-4" data-testid="footer-name">Fadoua OUBZA</div>

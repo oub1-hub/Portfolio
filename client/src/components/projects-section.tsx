@@ -54,7 +54,7 @@ export default function ProjectsSection() {
   const displayedProjects = showAll ? projects : projects.slice(0, 4);
 
   return (
-    <section id="projects" className="py-20 bg-slate-800/50">
+    <section id="projects" className="py-20 bg-slate-900/30 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4" data-testid="projects-title">Featured Projects</h2>
