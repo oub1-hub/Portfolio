@@ -1,0 +1,711 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fadoua OUBZA - Web Design & AI Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E40AF',
+                        secondary: '#3B82F6',
+                        accent: '#60A5FA',
+                        surface: '#1E293B',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .particle-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .particle:nth-child(1) { width: 80px; height: 80px; top: 10%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 60px; height: 60px; top: 20%; left: 80%; animation-delay: 2s; }
+        .particle:nth-child(3) { width: 100px; height: 100px; top: 60%; left: 70%; animation-delay: 4s; }
+        .particle:nth-child(4) { width: 40px; height: 40px; top: 80%; left: 20%; animation-delay: 1s; }
+        .particle:nth-child(5) { width: 70px; height: 70px; top: 40%; left: 40%; animation-delay: 3s; }
+        
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill-bar {
+            transition: width 2s ease-in-out;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3B82F6;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-50 font-inter">
+    <!-- @COMPONENT: Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-xl font-bold text-white">
+                    <span data-bind="user.name">Fadoua OUBZA</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-slate-300 hover:text-white transition-colors">Home</a>
+                    <a href="#projects" class="nav-link text-slate-300 hover:text-white transition-colors">Projects</a>
+                    <a href="#about" class="nav-link text-slate-300 hover:text-white transition-colors">About</a>
+                    <a href="#contact" class="nav-link text-slate-300 hover:text-white transition-colors">Contact</a>
+                </div>
+                
+                <!-- Social Links -->
+                <div class="hidden md:flex space-x-4">
+                    <a href="#" class="text-slate-400 hover:text-secondary transition-colors" data-implementation="Link to Instagram profile">
+                        <i class="fab fa-instagram text-lg"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-secondary transition-colors" data-implementation="Link to GitHub profile">
+                        <i class="fab fa-github text-lg"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-secondary transition-colors" data-implementation="Link to LinkedIn profile">
+                        <i class="fab fa-linkedin text-lg"></i>
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-slate-300 hover:text-white" data-event="click:toggleMobileMenu">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="md:hidden bg-slate-800 border-b border-slate-700" style="display: none;" data-mobile-menu="true">
+            <div class="px-4 py-3 space-y-3">
+                <a href="#home" class="block text-slate-300 hover:text-white transition-colors">Home</a>
+                <a href="#projects" class="block text-slate-300 hover:text-white transition-colors">Projects</a>
+                <a href="#about" class="block text-slate-300 hover:text-white transition-colors">About</a>
+                <a href="#contact" class="block text-slate-300 hover:text-white transition-colors">Contact</a>
+                <div class="flex space-x-4 pt-2">
+                    <a href="#" class="text-slate-400 hover:text-secondary transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-secondary transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-secondary transition-colors">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- @COMPONENT: Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Particle Background -->
+        <div class="particle-bg">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <!-- Hero Content -->
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-fade-in">
+                <p class="text-slate-300 text-lg mb-4">Hi, This is <span data-bind="user.name" class="text-secondary">Fadoua OUBZA</span></p>
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+                    <span class="text-white">Web Design</span><br>
+                    <span class="text-white">& Artificial</span><br>
+                    <span class="text-white">Intelligence</span>
+                </h1>
+                <p class="text-slate-300 text-lg sm:text-xl max-w-3xl mx-auto mb-8 leading-relaxed">
+                    I am a Web Designer and Artificial Intelligence graduate, passionate about creating innovative and user-friendly digital experiences. With a strong foundation in design and a deep understanding of AI, I specialize in building modern.
+                </p>
+                <button class="bg-primary hover:bg-secondary text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 glow-effect" data-event="click:scrollToProjects">
+                    View My Projects
+                </button>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-pulse">
+            <i class="fas fa-chevron-down text-slate-400 text-2xl"></i>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Hero Section -->
+
+    <!-- @COMPONENT: Projects Section -->
+    <section id="projects" class="py-20 bg-slate-800/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Featured Projects</h2>
+                <p class="text-slate-300 text-lg max-w-2xl mx-auto">
+                    Explore my latest work in web design and AI applications, showcasing innovative solutions and modern design principles.
+                </p>
+            </div>
+            
+            <!-- @MAP: projects.map(project => ( -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Project 1 -->
+                <div class="card-hover bg-surface rounded-xl overflow-hidden border border-slate-700">
+                    <!-- Modern e-commerce platform with sleek product displays and shopping interface -->
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Modern e-commerce platform interface" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3" data-bind="project.title">AI-Powered E-Commerce Platform</h3>
+                        <p class="text-slate-300 mb-4" data-bind="project.description">A modern e-commerce solution integrating AI recommendations and smart inventory management.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-secondary rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-primary/20 text-secondary rounded-full text-sm">AI/ML</span>
+                            <span class="px-3 py-1 bg-primary/20 text-secondary rounded-full text-sm">Node.js</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-secondary hover:text-accent transition-colors" data-implementation="Link to live demo">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                            <a href="#" class="text-secondary hover:text-accent transition-colors" data-implementation="Link to GitHub repo">
+                                <i class="fab fa-github mr-2"></i>Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="card-hover bg-surface rounded-xl overflow-hidden border border-slate-700">
+                    <!-- Responsive web application dashboard with modern UI elements and data visualization -->
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Modern web dashboard with analytics and charts" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3" data-bind="project.title">Smart Analytics Dashboard</h3>
+                        <p class="text-slate-300 mb-4" data-bind="project.description">Real-time analytics platform with AI-driven insights and beautiful data visualizations.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-secondary rounded-full text-sm">Vue.js</span>
+                            <span class="px-3 py-1 bg-primary/20 text-secondary rounded-full text-sm">D3.js</span>
+                            <span class="px-3 py-1 bg-primary/20 text-secondary rounded-full text-sm">Python</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-secondary hover:text-accent transition-colors" data-implementation="Link to live demo">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                            <a href="#" class="text-secondary hover:text-accent transition-colors" data-implementation="Link to GitHub repo">
+                                <i class="fab fa-github mr-2"></i>Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="card-hover bg-surface rounded-xl overflow-hidden border border-slate-700">
+                    <!-- AI technology visualization with neural networks and machine learning concepts -->
+                    <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="AI neural network visualization with blue tech aesthetic" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3" data-bind="project.title">Neural Network Visualizer</h3>
+                        <p class="text-slate-300 mb-4" data-bind="project.description">Interactive tool for visualizing and understanding neural network architectures and training processes.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-secondary rounded-full text-sm">TensorFlow</span>
+                            <span class="px-3 py-1 bg-primary/20 text-secondary rounded-full text-sm">WebGL</span>
+                            <span class="px-3 py-1 bg-primary/20 text-secondary rounded-full text-sm">JavaScript</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-secondary hover:text-accent transition-colors" data-implementation="Link to live demo">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                            <a href="#" class="text-secondary hover:text-accent transition-colors" data-implementation="Link to GitHub repo">
+                                <i class="fab fa-github mr-2"></i>Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="card-hover bg-surface rounded-xl overflow-hidden border border-slate-700">
+                    <!-- Modern mobile app interface design with clean UI and user experience focus -->
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Modern mobile app design mockups and UI elements" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3" data-bind="project.title">Mobile Design System</h3>
+                        <p class="text-slate-300 mb-4" data-bind="project.description">Comprehensive design system for mobile applications with reusable components and guidelines.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-secondary rounded-full text-sm">Figma</span>
+                            <span class="px-3 py-1 bg-primary/20 text-secondary rounded-full text-sm">React Native</span>
+                            <span class="px-3 py-1 bg-primary/20 text-secondary rounded-full text-sm">Design</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-secondary hover:text-accent transition-colors" data-implementation="Link to design file">
+                                <i class="fas fa-external-link-alt mr-2"></i>View Design
+                            </a>
+                            <a href="#" class="text-secondary hover:text-accent transition-colors" data-implementation="Link to documentation">
+                                <i class="fas fa-book mr-2"></i>Guide
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_MAP )) -->
+            
+            <div class="text-center">
+                <button class="border border-secondary text-secondary hover:bg-secondary hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300" data-event="click:loadMoreProjects">
+                    View All Projects
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Projects Section -->
+
+    <!-- @COMPONENT: About Section -->
+    <section id="about" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6">About Me</h2>
+                    <div class="space-y-4 text-slate-300 text-lg leading-relaxed">
+                        <p data-bind="user.bio">
+                            I'm a passionate Web Designer and AI enthusiast with a unique blend of creative design skills and technical expertise in artificial intelligence. My journey combines the art of visual storytelling with the science of machine learning.
+                        </p>
+                        <p data-bind="user.experience">
+                            With over 5 years of experience in web development and design, I've worked with startups and established companies to create digital experiences that are both beautiful and intelligent. I specialize in integrating AI capabilities into web applications to create smarter, more intuitive user experiences.
+                        </p>
+                        <p data-bind="user.philosophy">
+                            I believe that the future of web design lies in the seamless integration of artificial intelligence to create personalized, adaptive, and highly engaging digital experiences.
+                        </p>
+                    </div>
+                    
+                    <!-- Skills Section -->
+                    <div class="mt-8">
+                        <h3 class="text-2xl font-semibold mb-6">Skills & Expertise</h3>
+                        <div class="space-y-4">
+                            <!-- Skill 1 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300">Web Design & Development</span>
+                                    <span class="text-secondary">95%</span>
+                                </div>
+                                <div class="bg-slate-700 rounded-full h-2">
+                                    <div class="skill-bar bg-secondary h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Skill 2 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300">AI/Machine Learning</span>
+                                    <span class="text-secondary">88%</span>
+                                </div>
+                                <div class="bg-slate-700 rounded-full h-2">
+                                    <div class="skill-bar bg-secondary h-2 rounded-full" style="width: 88%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Skill 3 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300">React/Vue.js</span>
+                                    <span class="text-secondary">92%</span>
+                                </div>
+                                <div class="bg-slate-700 rounded-full h-2">
+                                    <div class="skill-bar bg-secondary h-2 rounded-full" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Skill 4 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-slate-300">UX/UI Design</span>
+                                    <span class="text-secondary">90%</span>
+                                </div>
+                                <div class="bg-slate-700 rounded-full h-2">
+                                    <div class="skill-bar bg-secondary h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center lg:text-right">
+                    <!-- Professional developer workspace with multiple monitors showing code and design -->
+                    <img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600" alt="Professional developer workspace with multiple monitors" class="rounded-2xl shadow-2xl mx-auto animate-float" data-mock-image="true" />
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-2 gap-6 mt-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-secondary" data-bind="stats.projects">50+</div>
+                            <div class="text-slate-300">Projects Completed</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-secondary" data-bind="stats.clients">30+</div>
+                            <div class="text-slate-300">Happy Clients</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-secondary" data-bind="stats.experience">5+</div>
+                            <div class="text-slate-300">Years Experience</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-secondary" data-bind="stats.awards">10+</div>
+                            <div class="text-slate-300">Awards Won</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: About Section -->
+
+    <!-- @COMPONENT: Services Section -->
+    <section class="py-20 bg-slate-800/30">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Services</h2>
+                <p class="text-slate-300 text-lg max-w-2xl mx-auto">
+                    I offer a comprehensive range of services combining design expertise with cutting-edge AI technology.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="card-hover bg-surface p-8 rounded-xl border border-slate-700 text-center">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-code text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Web Development</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        Custom web applications built with modern frameworks and best practices for performance and scalability.
+                    </p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="card-hover bg-surface p-8 rounded-xl border border-slate-700 text-center">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-brain text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">AI Integration</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        Intelligent features and machine learning capabilities to enhance user experience and business efficiency.
+                    </p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="card-hover bg-surface p-8 rounded-xl border border-slate-700 text-center">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-palette text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">UI/UX Design</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        User-centered design solutions that prioritize usability, accessibility, and visual appeal.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Services Section -->
+
+    <!-- @COMPONENT: Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
+                <p class="text-slate-300 text-lg max-w-2xl mx-auto">
+                    Ready to bring your ideas to life? Let's discuss your project and create something amazing together.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Let's Connect</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-secondary"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Email</div>
+                                <div class="text-slate-300" data-bind="contact.email">fadoua.oubza@example.com</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone text-secondary"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Phone</div>
+                                <div class="text-slate-300" data-bind="contact.phone">+1 (555) 123-4567</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-secondary"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Location</div>
+                                <div class="text-slate-300" data-bind="contact.location">San Francisco, CA</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-4">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-secondary hover:bg-primary hover:text-white transition-all duration-300">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-secondary hover:bg-primary hover:text-white transition-all duration-300">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-secondary hover:bg-primary hover:text-white transition-all duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-secondary hover:bg-primary hover:text-white transition-all duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-surface p-8 rounded-xl border border-slate-700">
+                    <form class="space-y-6" data-implementation="Handle form submission with validation">
+                        <!-- @STATE: form:object = {name: '', email: '', subject: '', message: ''} -->
+                        <div>
+                            <label for="name" class="block text-sm font-medium mb-2">Full Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition-colors" placeholder="Your Name" data-bind="form.name" required>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition-colors" placeholder="your.email@example.com" data-bind="form.email" required>
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition-colors" placeholder="Project Discussion" data-bind="form.subject" required>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition-colors resize-none" placeholder="Tell me about your project..." data-bind="form.message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary hover:bg-secondary text-white py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 glow-effect" data-event="click:submitForm">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Contact Section -->
+
+    <!-- @COMPONENT: Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="text-2xl font-bold mb-4" data-bind="user.name">Fadoua OUBZA</div>
+                <p class="text-slate-400 mb-6">Web Design & Artificial Intelligence Specialist</p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="#home" class="text-slate-400 hover:text-secondary transition-colors">Home</a>
+                    <a href="#projects" class="text-slate-400 hover:text-secondary transition-colors">Projects</a>
+                    <a href="#about" class="text-slate-400 hover:text-secondary transition-colors">About</a>
+                    <a href="#contact" class="text-slate-400 hover:text-secondary transition-colors">Contact</a>
+                </div>
+                <div class="flex justify-center space-x-4 mb-8">
+                    <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:text-secondary hover:bg-slate-700 transition-all duration-300">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:text-secondary hover:bg-slate-700 transition-all duration-300">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:text-secondary hover:bg-slate-700 transition-all duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <div class="border-t border-slate-800 pt-8">
+                    <p class="text-slate-500">© 2024 Fadoua OUBZA. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        (function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('[data-event="click:toggleMobileMenu"]');
+            const mobileMenu = document.querySelector('[data-mobile-menu="true"]');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    const isHidden = mobileMenu.style.display === 'none' || mobileMenu.style.display === '';
+                    mobileMenu.style.display = isHidden ? 'block' : 'none';
+                });
+            }
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = '0s';
+                        entry.target.classList.add('animate-slide-up');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe sections for scroll animations
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Skill bar animation on scroll
+            const skillBars = document.querySelectorAll('.skill-bar');
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bar = entry.target;
+                        const width = bar.style.width;
+                        bar.style.width = '0%';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 300);
+                    }
+                });
+            }, observerOptions);
+
+            skillBars.forEach(bar => {
+                skillObserver.observe(bar);
+            });
+
+            // Form submission handler
+            const contactForm = document.querySelector('form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // TODO: Implement form validation and submission
+                    console.log('Form submitted - implement actual submission logic');
+                    
+                    // Show success message (placeholder)
+                    alert('Thank you for your message! I will get back to you soon.');
+                });
+            }
+
+            // Add scroll effect to navigation
+            window.addEventListener('scroll', function() {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 50) {
+                    nav.classList.add('bg-slate-900/95');
+                } else {
+                    nav.classList.remove('bg-slate-900/95');
+                }
+            });
+
+            // Add active state to navigation links based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (window.scrollY >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-secondary');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('text-secondary');
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

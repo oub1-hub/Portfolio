@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ParticleBackground from "./particle-background";
+import myPic from "./my-pic.jpg";
 
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,18 +37,18 @@ export default function HeroSection() {
       </div>
       
       {/* Hero Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start lg:items-start">
+<div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div className={`transition-all duration-1000 ${isVisible ? "animate-fade-in" : "opacity-0"}`}>
-          <p className="text-slate-300 text-lg mb-4 animate-slide-up" style={{ animationDelay: "0.2s" }} data-testid="hero-greeting">
-            Hi, This is <span className="text-blue-400 font-semibold">Fadoua OUBZA</span>,
+          <p className="text-slate-300 text-lg mb-4 animate-slide-up" style={{ animationDelay: "0.2s", fontFamily:'Times New Roman' }} data-testid="hero-greeting">
+            Hi, This is <span className="text-blue-400 font-semibold" >Fadoua OUBZA</span>,
           </p>
           
           {/* Title with Flying Mini Robots */}
           <div className="relative">
             <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold mb-6 leading-tight animate-slide-up" style={{ animationDelay: "0.4s" }} data-testid="hero-title">
-              <span className="text-white block">Web Design</span>
-              <span className="text-white block">& Artificial</span>
-              <span className="text-white block">Intelligence</span>
+              
+    <span className="text-white block"> AI</span>
+              <span className="text-white block"> Engineering</span>
             </h1>
             
             {/* Flying Mini Robots around the title */}
@@ -78,7 +79,7 @@ export default function HeroSection() {
             </div>
           </div>
           
-          <p className="text-slate-300 text-lg sm:text-xl max-w-3xl mb-8 leading-relaxed animate-slide-up" style={{ animationDelay: "0.6s" }} data-testid="hero-description">
+          <p className="text-slate-300 text-lg sm:text-xl max-w-3xl mb-8 leading-relaxed animate-slide-up" style={{ animationDelay: "0.6s",fontFamily:'Times New Roman' }} data-testid="hero-description">
             I am a Web Designer and Artificial Intelligence 
             graduate, passionate about creating 
             innovative and user-friendly digital 
@@ -103,7 +104,7 @@ export default function HeroSection() {
             <div className="w-80 h-80 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 p-1 animate-float">
               <div className="w-full h-full rounded-full bg-slate-800 border-2 border-blue-500/30 flex items-center justify-center overflow-hidden glow-effect">
                 <img 
-                  src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400" 
+                 src={myPic}
                   alt="Fadoua OUBZA Profile" 
                   className="w-full h-full object-cover"
                   data-testid="profile-image"

@@ -42,7 +42,19 @@ export default function Navigation() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="text-xl font-bold text-white hover:text-blue-400 transition-all duration-300">
-            <span data-testid="brand-name" className="tracking-wide">Fadoua OUBZA</span>
+          <span data-testid="brand-name" className="tracking-wide">
+  {/* Lettres spéciales */}
+  <span  className="animate-spark" style={{ fontFamily: "'Tangerine', cursive", fontSize: "2.5rem", color: "#3e3c99ff" }}>F</span>
+  
+  {/* Lettres normales */}
+  <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.5rem", color: "#ffffff" }}>adoua </span>
+  
+  {/* Lettres spéciales */}
+  <span className="animate-spark" style={{ fontFamily: "'Tangerine', cursive", fontSize: "2.5rem", color: "#4d29afff" }}>O</span>
+  
+  {/* Lettres normales */}
+  <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.5rem", color: "#ffffff" }}>UBZA</span>
+</span>
           </div>
           
           {/* Desktop Navigation */}
@@ -51,6 +63,7 @@ export default function Navigation() {
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
+                style={{ fontFamily: "'Playfair display', sans-serif" }}
                 className={`nav-link text-slate-300 hover:text-blue-400 transition-all duration-300 capitalize transform hover:scale-105 ${
                   activeSection === section ? "text-blue-400 scale-105" : ""
                 }`}
@@ -64,21 +77,21 @@ export default function Navigation() {
           {/* Social Links */}
           <div className="hidden md:flex space-x-4">
             <a 
-              href="#" 
+              href="https://www.instagram.com/f_oubz/" 
               className="text-slate-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
               data-testid="social-instagram"
             >
               <i className="fab fa-instagram text-lg"></i>
             </a>
             <a 
-              href="#" 
+              href="https://github.com/oub1-hub" 
               className="text-slate-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
               data-testid="social-github"
             >
               <i className="fab fa-github text-lg"></i>
             </a>
             <a 
-              href="#" 
+              href="https://www.linkedin.com/in/fadoua-oubza-b98089303/" 
               className="text-slate-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
               data-testid="social-linkedin"
             >

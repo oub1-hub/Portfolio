@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@400;600;700&family=Nunito+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -36,8 +38,7 @@
   --sidebar-accent-foreground: hsl(217, 91%, 60%);
   --sidebar-border: hsl(215, 27%, 32%);
   --sidebar-ring: hsl(217, 91%, 60%);
-  --font-sans: 'Inter', sans-serif;
-  --font-serif: Georgia, serif;
+ --font-sans: 'Poppins', 'Montserrat', 'Nunito Sans', Arial, sans-serif;
   --font-mono: Menlo, monospace;
   --radius: 0.75rem;
   
@@ -82,7 +83,9 @@
     @apply bg-background text-foreground font-sans antialiased;
     background: linear-gradient(135deg, var(--portfolio-bg-gradient-start) 0%, var(--portfolio-bg-gradient-middle) 50%, var(--portfolio-bg-gradient-end) 100%);
     min-height: 100vh;
+    font-family: ''
   }
+
 }
 
 @layer components {
@@ -196,6 +199,21 @@
     animation: bounce 3s ease-in-out infinite;
   }
 }
+@keyframes spark {
+  0%, 100% {
+    text-shadow: 0 0 5px #ebcd26, 0 0 10px #7c67c5, 0 0 20px #ffd1b3;
+    color: #432792cb;
+  }
+  50% {
+    text-shadow: 0 0 15px #6a44b1, 0 0 30px #6956b1, 0 0 45px #fff;
+    color: #f0e436;
+  }
+}
+
+.animate-spark {
+  animation: spark 2s infinite ease-in-out;
+}
+
 
 @keyframes float {
   0%, 100% { 

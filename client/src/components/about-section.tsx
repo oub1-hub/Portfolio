@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import FImg from "./images/FADWA.png";
 
 interface Skill {
   name: string;
@@ -41,17 +42,14 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="animate-slide-up">
             <h2 className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-400" data-testid="about-title">About Me</h2>
-            <div className="space-y-4 text-slate-300 text-lg leading-relaxed">
+            <div className="space-y-4 text-slate-300 text-lg leading-relaxed" style={{ fontFamily: 'Times New Roman' }}>
               <p data-testid="about-bio">
                 I'm a passionate Web Designer and AI enthusiast with a unique blend of creative design skills 
                 and technical expertise in artificial intelligence. My journey combines the art of visual 
                 storytelling with the science of machine learning.
               </p>
               <p data-testid="about-experience">
-                With over 5 years of experience in web development and design, I've worked with startups 
-                and established companies to create digital experiences that are both beautiful and intelligent. 
-                I specialize in integrating AI capabilities into web applications to create smarter, more 
-                intuitive user experiences.
+            
               </p>
               <p data-testid="about-philosophy">
                 I believe that the future of web design lies in the seamless integration of artificial 
@@ -87,7 +85,7 @@ export default function AboutSection() {
           <div className="text-center lg:text-right animate-slide-up" style={{ animationDelay: "0.3s" }}>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600" 
+                src={FImg}
                 alt="Professional developer workspace" 
                 className="rounded-2xl shadow-2xl mx-auto animate-float glow-effect"
                 data-testid="about-image"
@@ -107,20 +105,21 @@ export default function AboutSection() {
             {/* Stats */}
             <div className="grid grid-cols-2 gap-6 mt-8">
               <div className="text-center" data-testid="stat-projects">
-                <div className="text-3xl font-bold text-secondary">50+</div>
+                <div className="text-3xl font-bold text-secondary">10+</div>
                 <div className="text-slate-300">Projects Completed</div>
               </div>
-              <div className="text-center" data-testid="stat-clients">
-                <div className="text-3xl font-bold text-secondary">30+</div>
-                <div className="text-slate-300">Happy Clients</div>
-              </div>
+      
               <div className="text-center" data-testid="stat-experience">
-                <div className="text-3xl font-bold text-secondary">5+</div>
+                <div className="text-3xl font-bold text-secondary">2+</div>
                 <div className="text-slate-300">Years Experience</div>
               </div>
+              <div className="text-center" data-testid="stat-clients">
+                <div className="text-3xl font-bold text-secondary">+7</div>
+                <div className="text-slate-300">Cybersecurity and Networking Programs</div>
+              </div>
               <div className="text-center" data-testid="stat-awards">
-                <div className="text-3xl font-bold text-secondary">10+</div>
-                <div className="text-slate-300">Awards Won</div>
+                <div className="text-3xl font-bold text-secondary">6+</div>
+                <div className="text-slate-300">Artificial Intelligence Certificates</div>
               </div>
             </div>
           </div>

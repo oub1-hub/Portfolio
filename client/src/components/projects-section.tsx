@@ -1,5 +1,10 @@
 import { useState } from "react";
-
+import WhisperNittyImg from "./images/WhisperNitty.png";
+import ESP32Img from "./images/ESP32.jpg";
+import AGRImg from "./images/AGRIHEAL.png";
+import RIVALREVERBImg from "./images/RIVAL REVERB.png";
+import DjImg from "./images/Squarelytics.png";
+import PImg from "./images/POTA.jpg";
 interface Project {
   id: number;
   title: string;
@@ -13,10 +18,10 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "AI-Powered E-Commerce Platform",
-    description: "A modern e-commerce solution integrating AI recommendations and smart inventory management.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-    technologies: ["React", "AI/ML", "Node.js"],
+    title: "Beverage Management Java App",
+    description: "Java GUI application for managing and ordering beverages, providing a user-friendly interface for real-time operations.",
+    image:PImg ,
+    technologies: ["Java", "JavaFX", "SQLite"],
     liveLink: "#",
     codeLink: "#"
   },
@@ -24,26 +29,35 @@ const projects: Project[] = [
     id: 2,
     title: "Smart Analytics Dashboard",
     description: "Real-time analytics platform with AI-driven insights and beautiful data visualizations.",
-    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-    technologies: ["Vue.js", "D3.js", "Python"],
+    image: DjImg,
+    technologies: ["Html", "Django", "javaScript","CSS"],
     liveLink: "#",
     codeLink: "#"
   },
   {
     id: 3,
-    title: "Neural Network Visualizer",
-    description: "Interactive tool for visualizing and understanding neural network architectures and training processes.",
-    image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-    technologies: ["TensorFlow", "WebGL", "JavaScript"],
+    title: "Plant Diseases Detection system",
+    description: "plant disease detection system using ESP32 microcontroller and a smart mobile application to identify and track plant health issues in real time.",
+    image: ESP32Img,
+    technologies: ["TensorFlow", "ESP32", "MobileNetv2","React Native","Firebase","React"],
     liveLink: "#",
     codeLink: "#"
   },
   {
     id: 4,
-    title: "Mobile Design System",
-    description: "Comprehensive design system for mobile applications with reusable components and guidelines.",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-    technologies: ["Figma", "React Native", "Design"],
+    title: " IA assistant for Branding",
+    description: "AI assistant to support users in launching their own brand, including logo evaluation, logo generation, and personalized business advice.",
+    image: WhisperNittyImg,
+    technologies: ["Firebase", "React Native", "flask"],
+    liveLink: "#",
+    codeLink: "#"
+  },
+  {
+    id: 5,
+    title: " RIVAL REVERB",
+    description: "Rival Reverb is a platform for publishing articles and exchanging ideas, aimed at creating a large, educated, and highly motivated network of innovative and influential individuals",
+    image: RIVALREVERBImg,
+    technologies: ["MySQL", "Html", "PHP", "CSS", "JavaScript"],
     liveLink: "#",
     codeLink: "#"
   }
